@@ -1,0 +1,122 @@
+[
+    {
+        "serial_number": "1.",
+        "e_published_data": "07-Aug-2026 12:30 PM",
+        "bid_submission_closing_date": "17-Aug-2026 03:00 PM",
+        "tender_opening_date": "19-Aug-2026 03:00 PM",
+        "tender_information": "https://wbtenders.gov.in/nicgep/app?component=%24DirectLink&page=FrontEndLatestActiveTenders&service=direct&session=T&sp=SYDwRyAu7QFxeDNhlZ%2B3rtw%3D%3D",
+        "tender_id": "[WEBEL/ EOT/W/26-27/000082 ] [WEBEL/ EOT/W/26-27/000082 ][2026_WEBEL_1036811_1]",
+        "organisation_chain": "WEBEL||COMMERCIAL DEPT.",
+        "tender_value": "NA",
+        "details": null,
+        "error": "'Page' object has no attribute 'evel_on_selector_all'"
+    },
+    {
+        "serial_number": "2.",
+        "e_published_data": "07-Aug-2026 12:30 PM",
+        "bid_submission_closing_date": "19-Aug-2026 05:00 PM",
+        "tender_opening_date": "21-Aug-2026 06:55 PM",
+        "tender_information": "https://wbtenders.gov.in/nicgep/app?component=%24DirectLink&page=FrontEndLatestActiveTenders&service=direct&session=T&sp=SzES11mtZVKnLmpQdDwhuUw%3D%3D",
+        "tender_id": "[Construction of Entrance Gate at Pandaveswar New Build BPHC Pandaveswar (Baidayanathpur G.P)] [e-NIT/02/BDO/2026-27][2026_ZPHD_1036260_13]",
+        "organisation_chain": "Zilla Parishad||Zilla Parishad||PASCHIM BARDHAMAN||PANDAVESWAR",
+        "tender_value": "2,00,000",
+        "details": null,
+        "error": "'Page' object has no attribute 'evel_on_selector_all'"
+    },
+    {
+        "serial_number": "3.",
+        "e_published_data": "07-Aug-2026 12:05 PM",
+        "bid_submission_closing_date": "19-Aug-2026 12:00 PM",
+        "tender_opening_date": "21-Aug-2026 12:00 PM",
+        "tender_information": "https://wbtenders.gov.in/nicgep/app?component=%24DirectLink&page=FrontEndLatestActiveTenders&service=direct&session=T&sp=SG8WTav%2BADL2IEwhs9BuJRQ%3D%3D",
+        "tender_id": "[KMC/ROADS/2026-2027/142] [KMC/ROADS/2026-2027/142][2026_KMC_1036807_1]",
+        "organisation_chain": "KOLKATA MUNICIPAL CORPORATION||ROADS (CIVIL)",
+        "tender_value": "4,96,565",
+        "details": null,
+        "error": "'Page' object has no attribute 'evel_on_selector_all'"
+    },
+    {
+        "serial_number": "4.",
+        "e_published_data": "07-Aug-2026 12:00 PM",
+        "bid_submission_closing_date": "31-Aug-2026 04:00 PM",
+        "tender_opening_date": "08-Sep-2026 12:00 PM",
+        "tender_information": "https://wbtenders.gov.in/nicgep/app?component=%24DirectLink&page=FrontEndLatestActiveTenders&service=direct&session=T&sp=S2kUytUGzP1S%2FsBX54t08aQ%3D%3D",
+        "tender_id": "[Supply and Installation of brand new and unused Tools / Equipment and Machineries. (Schedule-A)] [ITI/PRL/e-NIT-01/2026-27][2026_ITIP_1032802_1]",
+        "organisation_chain": "INDUSTRIAL TRAINING INSTITUTE PURULIA",
+        "tender_value": "80,000",
+        "details": null,
+        "error": "'Page' object has no attribute 'evel_on_selector_all'"
+    },
+    {
+        "serial_number": "5.",
+        "e_published_data": "07-Aug-2026 12:00 PM",
+        "bid_submission_closing_date": "31-Aug-2026 04:00 PM",
+        "tender_opening_date": "08-Sep-2026 12:00 PM",
+        "tender_information": "https://wbtenders.gov.in/nicgep/app?component=%24DirectLink&page=FrontEndLatestActiveTenders&service=direct&session=T&sp=SfN8hPN8ZCoa3x7xzlwZMSQ%3D%3D",
+        "tender_id": "[Supply, Installation of Tools / Equipment for Electronics Mechanic as per Tender Schedule B.] [ITI/PRL/e-NIT-01/2026-27][2026_ITIP_1032802_2]",
+        "organisation_chain": "INDUSTRIAL TRAINING INSTITUTE PURULIA",
+        "tender_value": "4,00,000",
+        "details": null,
+        "error": "'Page' object has no attribute 'evel_on_selector_all'"
+    },
+    {
+        "serial_number": "6.",
+        "e_published_data": "07-Aug-2026 12:00 PM",
+        "bid_submission_closing_date": "31-Aug-2026 04:00 PM",
+        "tender_opening_date": "08-Sep-2026 12:00 PM",
+        "tender_information": "https://wbtenders.gov.in/nicgep/app?component=%24DirectLink&page=FrontEndLatestActiveTenders&service=direct&session=T&sp=S7de9abtfriTYVNyFH9CG0A%3D%3D",
+        "tender_id": "[Supply, Installation of Tools / Equipment for Fitter Trade as per Tender Schedule C.] [ITI/PRL/e-NIT-01/2026-27][2026_ITIP_1032802_3]",
+        "organisation_chain": "INDUSTRIAL TRAINING INSTITUTE PURULIA",
+        "tender_value": "23,00,000",
+        "details": null,
+        "error": "'Page' object has no attribute 'evel_on_selector_all'"
+    },
+    {
+        "serial_number": "7.",
+        "e_published_data": "07-Aug-2026 12:00 PM",
+        "bid_submission_closing_date": "31-Aug-2026 04:00 PM",
+        "tender_opening_date": "08-Sep-2026 12:00 PM",
+        "tender_information": "https://wbtenders.gov.in/nicgep/app?component=%24DirectLink&page=FrontEndLatestActiveTenders&service=direct&session=T&sp=STCdTl%2FYwHyREea9loPAyNA%3D%3D",
+        "tender_id": "[Supply, Installation of Tools / Equipment for Foundryman Trade as per Tender Schedule D.] [ITI/PRL/e-NIT-01/2026-27][2026_ITIP_1032802_4]",
+        "organisation_chain": "INDUSTRIAL TRAINING INSTITUTE PURULIA",
+        "tender_value": "84,000",
+        "details": null,
+        "error": "'Page' object has no attribute 'evel_on_selector_all'"
+    },
+    {
+        "serial_number": "8.",
+        "e_published_data": "07-Aug-2026 12:00 PM",
+        "bid_submission_closing_date": "31-Aug-2026 04:00 PM",
+        "tender_opening_date": "08-Sep-2026 12:00 PM",
+        "tender_information": "https://wbtenders.gov.in/nicgep/app?component=%24DirectLink&page=FrontEndLatestActiveTenders&service=direct&session=T&sp=SfKY%2Fae8bPEAryYyrcMGtXA%3D%3D",
+        "tender_id": "[Supply, Installation of Tools / Equipment for SMW Trade as per Tender Schedule E] [ITI/PRL/e-NIT-01/2026-27][2026_ITIP_1032802_5]",
+        "organisation_chain": "INDUSTRIAL TRAINING INSTITUTE PURULIA",
+        "tender_value": "1,40,000",
+        "details": null,
+        "error": "'Page' object has no attribute 'evel_on_selector_all'"
+    },
+    {
+        "serial_number": "9.",
+        "e_published_data": "07-Aug-2026 12:00 PM",
+        "bid_submission_closing_date": "31-Aug-2026 04:00 PM",
+        "tender_opening_date": "08-Sep-2026 12:00 PM",
+        "tender_information": "https://wbtenders.gov.in/nicgep/app?component=%24DirectLink&page=FrontEndLatestActiveTenders&service=direct&session=T&sp=SwSz0cWv7BJjO%2FSrAPGmOjg%3D%3D",
+        "tender_id": "[Supply, Installation of Tools / Equipment for Surveyor Trade as per Tender Schedule F.] [ITI/PRL/e-NIT-01/2026-27][2026_ITIP_1032802_6]",
+        "organisation_chain": "INDUSTRIAL TRAINING INSTITUTE PURULIA",
+        "tender_value": "3,73,000",
+        "details": null,
+        "error": "'Page' object has no attribute 'evel_on_selector_all'"
+    },
+    {
+        "serial_number": "10.",
+        "e_published_data": "07-Aug-2026 12:00 PM",
+        "bid_submission_closing_date": "31-Aug-2026 04:00 PM",
+        "tender_opening_date": "08-Sep-2026 12:00 PM",
+        "tender_information": "https://wbtenders.gov.in/nicgep/app?component=%24DirectLink&page=FrontEndLatestActiveTenders&service=direct&session=T&sp=SDGn8szEtp5FN93PepCttBA%3D%3D",
+        "tender_id": "[Supply, Installation of Tools / Equipment for Machinist Trade as per Tender Schedule G] [ITI/PRL/e-NIT-01/2026-27][2026_ITIP_1032802_7]",
+        "organisation_chain": "INDUSTRIAL TRAINING INSTITUTE PURULIA",
+        "tender_value": "1,25,000",
+        "details": null,
+        "error": "'Page' object has no attribute 'evel_on_selector_all'"
+    }
+]
