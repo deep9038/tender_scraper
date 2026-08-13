@@ -25,6 +25,7 @@ table => Array.from(table.querySelectorAll('tr')).map(
 """
 
 
+
 def parse_data(s):
     return datetime.strptime(s.strip(),"%d-%b-%Y %I:%M %p")
 

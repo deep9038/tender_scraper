@@ -1,3 +1,13 @@
 .venv/
 __pycache__/
 *.pyc
+# scraped data
+*.jsonl
+*.json
+
+# logs
+*.log
+
+# debug artifacts
+failures/
+trace.zip
