@@ -1,1 +1,3 @@
 59% of open tenders close within 7 days, so the pipeline must run daily
+
+psql -h localhost -p 5432 -U tender -d tenders

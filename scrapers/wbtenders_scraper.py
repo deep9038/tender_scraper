@@ -8,7 +8,7 @@ import os
 os.makedirs("failures", exist_ok=True)
 
 TRACE = False   # True records a Playwright trace -- heavy, debugging runs only
-REFRESH_DAYS = 5
+REFRESH_DAYS = 2
 base_url = "https://wbtenders.gov.in/nicgep/app?page=FrontEndLatestActiveTenders&service=page"
 
 # Reads every <tr> in a table and returns its cells as ('k'|'v', text) pairs.

@@ -1,7 +1,5 @@
-
 -- DUMP layer raw data will be here wait for cleaning
 -- raw_tenders = loading zone. never edited, naver parsed.
-
 CREATE TABLE IF NOT EXISTS raw_tenders(
     tender_id TEXT PRIMARY KEY,
     raw JSONB NOT NULL,
@@ -13,7 +11,6 @@ CREATE TABLE IF NOT EXISTS raw_tenders(
 -- CLEAN layer
 -- Only the columns someone actually filters, groups, or reads.
 -- The other ~46 fields stay in raw_tenders until asked for.
-
 CREATE TABLE IF NOT EXISTS tender_stg (
     tender_id TEXT PRIMARY KEY,
     department TEXT,
@@ -26,4 +23,19 @@ CREATE TABLE IF NOT EXISTS tender_stg (
     published_at   TIMESTAMPTZ,
     bid_closes_at  TIMESTAMPTZ
 );
+
+
+
+
+CREATE OR REPLACE FUNCTION safe_ts(txt TEXT, fmt text)
+RETURNS timestamptz AS $$
+BEGIN
+    RETURN to_timestamp(txt, fmt);
+EXCEPTION WHEN others THEN
+    RETURN NULL;
+END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
+
+
 

@@ -7,8 +7,8 @@ raw->>'location',
 raw->>'pincode',
 -- some values for tender_values are '0.00' whitch mean not desided yet that's why this secuation is converted to have NULL insted of 0.00
 NULLIF(NULLIF(NULLIF(replace(raw->>'tander_value',',',''),'NA'),'')::numeric,0),
-to_timestamp(NULLIF(raw->>'published_date','NA'),'DD-Mon-YYYY HH12:MI AM'),
-to_timestamp(NULLIF(raw->>'bid_submition_closing_date','NA'),'DD-Mon-YYYY HH12:MI AM'),
+safe_ts(NULLIF(raw->>'published_date','NA'),'DD-Mon-YYYY HH12:MI AM'),
+safe_ts(NULLIF(raw->>'bid_submition_closing_date','NA'),'DD-Mon-YYYY HH12:MI AM'),
 raw->>'tender_category',
 raw->>'work_description' 
 from raw_tenders 
