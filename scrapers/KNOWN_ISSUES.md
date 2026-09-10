@@ -4,3 +4,6 @@ I let my own pipeline go 15 days stale and only noticed because a count dropped
 
 
 there is imposible data issue . e_pubshed_date values have one imposible data "31 secptembor" tender_id = '2026_MAD_1039828_4'
+
+
+when a tender reopen or dedline changes data base have historical knowleg of that . 

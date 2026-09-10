@@ -21,7 +21,8 @@ CREATE TABLE IF NOT EXISTS tender_stg (
     pincode TEXT,
     tender_value NUMERIC(15,2),
     published_at   TIMESTAMPTZ,
-    bid_closes_at  TIMESTAMPTZ
+    bid_closes_at  TIMESTAMPTZ,
+    bid_opens_at TIMESTAMPTZ
 );
 
 
@@ -37,5 +38,23 @@ END;
 $$ LANGUAGE plpgsql IMMUTABLE;
 
 
+CREATE TABLE IF NOT EXISTS tender_covers (
+    tender_id TEXT REFERENCES tender_stg(tender_id),
+    cover_no SMALLINT,
+    cover_type TEXT,
+    PRIMARY KEY (tender_id, cover_no)
+);
 
 
+
+
+CREATE TABLE IF NOT EXISTS tender_history(
+    tender_id TEXT NOT NULL,
+    published_at TIMESTAMPTZ,
+    bid_closes_at TIMESTAMPTZ,
+    bid_opens_at TIMESTAMPTZ,
+    valid_from TIMESTAMPTZ NOT NULL,
+    valid_to TIMESTAMPTZ,
+    is_current BOOLEAN NOT NULL DEFAULT TRUE,
+    PRIMARY KEY (tender_id, valid_from)
+);

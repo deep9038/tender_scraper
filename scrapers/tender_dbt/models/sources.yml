@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: tender
+    schema: public
+    description: Tables loaded by the scraper, outside dbt's control.
+    tables:
+      - name: raw_tenders
+        description: One row per tender, exactly as scraped. Never edited.
+        columns:
+          - name: tender_id
+            description: GePNIC id. Primary key of the raw layer.
+            tests: [not_null, unique]

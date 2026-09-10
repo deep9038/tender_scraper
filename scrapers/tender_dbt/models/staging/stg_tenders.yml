@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: stg_tenders
+    description: One row per tender, typed and cleaned. Built from raw_tenders.
+    columns:
+      - name: tender_id
+        description: GePNIC id, stable forever. Our key everywhere.
+        tests: [not_null, unique]
+
+      - name: category
+        description: Works, Goods or Services.
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Works', 'Goods', 'Services']
+
+      - name: department
+        description: First segment of organisation_chain (DEPT||CIRCLE||DIVISION).
+        tests: [not_null]
+
+      - name: tender_value
+        description: >
+          Rupees. NULL means not disclosed - the source uses 'NA', ''
+          and '0.00' interchangeably, and all three become NULL.

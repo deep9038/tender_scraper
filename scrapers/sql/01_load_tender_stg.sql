@@ -1,4 +1,4 @@
-insert into tender_stg(tender_id,department, title, location, pincode, tender_value, published_at, bid_closes_at, category, description)
+insert into tender_stg(tender_id,department, title, location, pincode, tender_value, published_at, bid_closes_at, category, description,bid_opens_at)
 select 
 tender_id,
 split_part(raw->>'organisation_chain','||',1),
@@ -10,7 +10,8 @@ NULLIF(NULLIF(NULLIF(replace(raw->>'tander_value',',',''),'NA'),'')::numeric,0),
 safe_ts(NULLIF(raw->>'published_date','NA'),'DD-Mon-YYYY HH12:MI AM'),
 safe_ts(NULLIF(raw->>'bid_submition_closing_date','NA'),'DD-Mon-YYYY HH12:MI AM'),
 raw->>'tender_category',
-raw->>'work_description' 
+raw->>'work_description',
+safe_ts(NULLIF(raw->>'bid_opening_date','NA'),'DD-Mon-YYYY HH12:MI AM')
 from raw_tenders 
 on conflict (tender_id) do update
 set department = excluded.department,
@@ -21,5 +22,6 @@ set department = excluded.department,
     published_at = excluded.published_at,
     bid_closes_at = excluded.bid_closes_at,
     category = excluded.category,
-    description = excluded.description
+    description = excluded.description,
+    bid_opens_at = excluded.bid_opens_at
 ;

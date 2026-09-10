@@ -11,3 +11,8 @@ __pycache__/
 # debug artifacts
 failures/
 trace.zip
+
+
+tender_dbt/target/
+tender_dbt/dbt_packages/
+tender_dbt/logs/
