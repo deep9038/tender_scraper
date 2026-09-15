@@ -61,3 +61,7 @@ SELECT tender_id,
 FROM changes 
 WHERE previous IS NOT NULL
 ORDER BY valid_from DESC;
+
+
+
+
