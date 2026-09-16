@@ -22,3 +22,8 @@ select tender_id,cover_no, cover_type from dbt.stg_covers;
 
 select tender_id, cover_no, count(*) from dbt.stg_covers
 group by tender_id,cover_no having count(*) > 1;
+
+
+
+select (select sum(tender_value) from dbt.stg_tenders where bid_closes_at > now()) as stg_total,
+(select sum(tender_value) from public.tender_stg where bid_closes_at > now()) as stg_total;
