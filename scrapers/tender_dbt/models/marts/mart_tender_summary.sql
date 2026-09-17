@@ -6,5 +6,6 @@ WITH cover_counts AS (
 )
 
 
-SELECT t.tender_id, t.title,t.department,t.location,t.tender_value,t.bid_opens_at,t.bid_closes_at, COALESCE(c.cover_count, 0) AS cover_count FROM {{ref("stg_tenders")}} t 
+SELECT t.tender_id, t.title,t.department,t.location,t.tender_value,t.bid_opens_at,t.bid_closes_at, COALESCE(c.cover_count, 0) AS cover_count 
+FROM {{ref("stg_tenders")}} t 
 LEFT JOIN cover_counts c USING (tender_id)
