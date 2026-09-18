@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 ../.venv/bin/python wbtenders_scraper.py # will run the west bengal tender scraper and save the data in raw folder
 ../.venv/bin/python load_raw.py  # will load the raw data in raw_tender table 
 ../.venv/bin/dbt build --project-dir tender_dbt # transform the raw_tenders into staging then mart 
-docker exec -i tender-db psql -U tender -d tenders < sql/03_load_tender_history.sql  # will use the rewriten sql command to load the raw data to minimal understandale table data in tender history table  
+# docker exec -i tender-db psql -U tender -d tenders < sql/03_load_tender_history.sql  # will use the rewriten sql command to load the raw data to minimal understandale table data in tender history table  
 
 
 

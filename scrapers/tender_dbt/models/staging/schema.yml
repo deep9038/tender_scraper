@@ -1,0 +1,27 @@
+version: 2
+
+
+models:
+  - name: stg_tenders
+    description: One row per tender, typed and cleaned.
+    columns:
+      - name: tender_id
+        description: GePNIC id. stable forever.
+        tests: [not_null,unique]
+
+      - name: category
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Works', 'Goods', 'Services']
+
+  - name: stg_covers
+    description: One row per cover. Two to four per tender.
+    columns:
+      - name: tender_id
+        tests: 
+          - not_null
+          - relationships:
+              arguments:
+              to: ref('stg_tenders')
+              field: tender_id
