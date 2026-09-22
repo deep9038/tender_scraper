@@ -1,2 +1,4 @@
 playwright
 psycopg[binary]
+requests
+Pillow

@@ -6,9 +6,14 @@ from datetime import datetime, timedelta
 import traceback
 import os
 os.makedirs("failures", exist_ok=True)
+import base64  
+from PIL import Image 
+from playwright.sync_api import TimeoutError as PWTimeout
+import discord_relay
+
 
 TRACE = False   # True records a Playwright trace -- heavy, debugging runs only
-REFRESH_DAYS = 1
+REFRESH_DAYS = 5
 base_url = "https://wbtenders.gov.in/nicgep/app?page=FrontEndLatestActiveTenders&service=page"
 
 # Reads every <tr> in a table and returns its cells as ('k'|'v', text) pairs.
@@ -131,23 +136,82 @@ def extract_cover_table(page):
 
 
 
+def captcha_png(page,path="failures/captcha.png"):
+    src = page.locator("#captchaImage").get_attribute("src")
+    if not src or not src.startswith("data:image"):
+        raise RuntimeError(f"captcha src is not a data URI: {str(src)[:60]}")
+
+    raw = base64.b64decode(src.split(",",1)[1])
+    with open(path,"wb") as fh: 
+        fh.write(raw)
+
+    img = Image.open(path).convert("RGBA")
+    bg = Image.new("RGB", img.size, "white")
+    bg.paste(img, mask=img.split()[3])
+    bg = bg.resize((img.width * 3, img.height * 3), Image.LANCZOS)
+    bg.save(path)
+    return path
+
+
+def get_captcha_answer(png_path):
+    msg_id = discord_relay.send_captcha(png_path)
+    print(f" captcha sent to discord, waiting for reply...")
+    return discord_relay.wait_for_reply(msg_id)
+
+
+
+def solve_captcha(page,attempts=3):
+    for attempt in range(1, attempts + 1):
+        print(f" captcha attempt {attempt}  of {attempts}")
+        answer = get_captcha_answer(captcha_png(page))
+
+        page.fill("#captchaText",answer)
+        page.click("#Submit")
+
+        try:
+            page.wait_for_selector("table#table", timeout=10000)
+            print("  captcha accepted")
+            return
+        except PWTimeout:
+            print(" rejected, requesting a new captcha")
+            page.click("#captcha")
+            page.wait_for_timeout(500)
+
+    raise RuntimeError(f"captcha failed after {attempts} attempts")
+
+
+
+
+
+
+
+
 
 
 
 with sync_playwright() as p:
     browser = p.chromium.launch(headless=True)
     context = browser.new_context()
-
     if TRACE:
         context.tracing.start(screenshots=True, snapshots=True, sources=True)
-
     try:
-
-    
         list_page = context.new_page()
         detail_page = context.new_page()
         list_page.goto(base_url)
-        input("Press Enter to continue the browser...")
+        solve_captcha(list_page)
+        # print("URL :",list_page.url)
+        # print("TITLE :", list_page.title())
+        # list_page.screenshot(path="failures/after_goto.png", full_page=True)
+        # src = list_page.locator("#captchaImage").get_attribute("src")
+        # payload = src.split(",",1)[1]
+        # raw = base64.b64decode(payload)
+        # with open("failures/captcha.png","wb") as fh:
+        #     fh.write(raw)
+
+
+        # with open("failures/after_goto.html","w",encoding="utf-8") as fh:
+        #     fh.write(list_page.content())
+        # input("Press Enter to continue the browser...")
         list_page.wait_for_selector("table#table")
 
 
@@ -200,6 +264,8 @@ with sync_playwright() as p:
                     done.add(r["gid"])
                     try:
                         detail_page.goto(r["detail_url"])
+                        detail_page.wait_for_timeout(300)
+
                         detail_page.wait_for_selector("table.tablebg")
 
 
@@ -328,10 +394,17 @@ with sync_playwright() as p:
 
                     except Exception as e:
                         tag = f"failures/p{page_no}_{r['tender_id'][:20].replace('/', '_')}"
-                        detail_page.screenshot(path=f"{tag}.png", full_page=True)
-                        with open(f"{tag}.html", "w", encoding="utf-8") as fh:
-                            fh.write(detail_page.content())
-                        print(f"  FAIL {type(e).__name__}: {e}  -> saved {tag}.png")
+                        saved = False
+                        try:
+                            detail_page.screenshot(path=f"{tag}.png", timeout=5000)
+
+                            with open(f"{tag}.html", "w", encoding="utf-8") as fh:
+                                fh.write(detail_page.content())
+                            saved = True
+                        except Exception:
+                            pass
+                        note = f"-> saved {tag}.png" if saved else "-> no evidence"
+                        print(f" FAIL {type(e).__name__}: {e} {note}")
                         continue                     # lose one tender, not the run
 
 
