@@ -13,8 +13,39 @@ import discord_relay
 
 
 TRACE = False   # True records a Playwright trace -- heavy, debugging runs only
-REFRESH_DAYS = 5
 base_url = "https://wbtenders.gov.in/nicgep/app?page=FrontEndLatestActiveTenders&service=page"
+
+
+
+
+LAST_RUN = ".last_run"
+
+
+def _refresh_days():
+    override = os.environ.get("REFRESH_DAYS")
+    if override:
+        return int(override)
+
+    try:
+        with open(LAST_RUN) as fh:
+            last = datetime.fromisoformat(fh.read().strip())
+    except (FileNotFoundError, ValueError):
+        return 7                      # first run, or unreadable marker
+
+    return max(1, (datetime.now() - last).days + 1)
+
+
+REFRESH_DAYS = _refresh_days()
+print(f"refreshing tenders published in the last {REFRESH_DAYS} day(s)")
+
+
+
+
+
+
+
+
+
 
 # Reads every <tr> in a table and returns its cells as ('k'|'v', text) pairs.
 PAIRS_JS = """
@@ -445,7 +476,7 @@ with sync_playwright() as p:
                     except Exception:
                         print("  -> could not save failure evidence")
                     traceback.print_exc()
-                    break
+                    raise
 
 
                 list_page.wait_for_timeout(500)
@@ -454,6 +485,10 @@ with sync_playwright() as p:
         except Exception:
             print("UNEXPECTED CRASH")
             traceback.print_exc()
+            raise
+        with open(LAST_RUN,"w") as fh:
+            fh.write(datetime.now().isoformat())
+
     finally:
         if TRACE:
             context.tracing.stop(path="trace.zip")

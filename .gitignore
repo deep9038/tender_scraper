@@ -19,3 +19,5 @@ tender_dbt/logs/
 
 # secrets
 .env
+
+.last_run
