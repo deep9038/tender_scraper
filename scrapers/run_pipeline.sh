@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail   # Stop imidiatly if anything wrong happen  
 cd "$(dirname "$0")"
+export PYTHONUNBUFFERED=1
 set -a
 source .env
 set +a
+docker start tender-db >/dev/null 2>&1 || true
+docker exec tender-db pg_isready -U tender -q \
+  || { echo "postgres not reachable - aborting before scrape"; exit 1; }
 ../.venv/bin/python wbtenders_scraper.py # will run the west bengal tender scraper and save the data in raw folder
 ../.venv/bin/python load_raw.py  # will load the raw data in raw_tender table 
 ../.venv/bin/dbt build --project-dir tender_dbt # transform the raw_tenders into staging then mart 
