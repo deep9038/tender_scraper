@@ -2,3 +2,4 @@ playwright
 psycopg[binary]
 requests
 Pillow
+boto3
